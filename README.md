@@ -1,155 +1,152 @@
-📱 Real-Time Edge Detection Viewer
-Android (Java/Kotlin) • OpenCV (C++) • OpenGL ES • TypeScript Web Viewer
+# 📱 **Real-Time Edge Detection Viewer**
+### **Android (Java/Kotlin) • OpenCV (C++) • OpenGL ES • TypeScript Web Viewer**
 
-A complete real-time image-processing pipeline combining Android camera, native OpenCV (C++), and OpenGL ES rendering.
-Additionally, a lightweight TypeScript web viewer demonstrates exporting and visualizing processed frames on the web.
+A complete real-time image processing pipeline combining **Android Camera**, **Native OpenCV C++**, and **OpenGL ES** rendering.  
+Includes a minimal **TypeScript Web Viewer** for displaying processed frames.
 
-Built as part of the Software Engineering Intern (R&D) Assignment.
+_Project submitted as part of the **Software Engineering Intern (R&D) Assignment**._
 
-🚀 Features Implemented
-📘 Android Application
+---
 
-📸 Camera feed capture using TextureView / SurfaceTexture
+## 🚀 **Features Implemented**
 
-🔗 JNI bridge for sending frames to native C++ code
+### 📘 **Android Application**
+- Camera feed capture using **TextureView / SurfaceTexture**
+- **JNI bridge** for sending frames to native C++
+- **OpenCV processing**, including:
+  - Grayscale  
+  - Blur  
+  - Canny edge detection
+- **OpenGL ES 2.0 rendering** of processed frames
+- Modular structure:
+  - `app/` — Java/Kotlin logic  
+  - `app/src/main/cpp/` — C++ native logic  
+  - `gl/` — OpenGL renderer (optional)
 
-🧠 OpenCV-based processing (Canny edge detection / grayscale)
+---
 
-🎨 OpenGL ES 2.0 rendering for real-time output
+### 🧠 **Native C++ (NDK + OpenCV)**
+- Located at: `app/src/main/cpp/`
+- Handles:
+  - Frame conversion  
+  - Image filtering  
+  - Returning processed output to Java
+- Built via **CMake** (`CMakeLists.txt`)
 
-🗂 Modular structure:
+---
 
-app/ — Android Java/Kotlin logic
+### 🎨 **OpenGL ES Rendering**
+- Uses **OpenGL ES 2.0**
+- Renders:
+  - Raw camera frames  
+  - Processed OpenCV textures
+- Maintains **10–15 FPS** performance
 
-app/src/main/cpp/ — Native C++ processing
+---
 
-gl/ — OpenGL renderer (if added)
-
-🧠 Native C++ (NDK + OpenCV)
-
-Location: app/src/main/cpp/
-
-Includes:
-
-Frame processing (grayscale, blur, canny)
-
-Efficient native memory handling
-
-JNI functions for communication with Java
-
-Built using CMake (CMakeLists.txt)
-
-🎨 OpenGL ES Rendering
-
-Uses OpenGL ES 2.0
-
-Renders:
-
-Raw camera texture
-
-OR processed OpenCV texture
-
-Smooth rendering targeting 10–15 FPS
-
-🌐 Web Viewer (TypeScript)
-
-Folder: /web/
+### 🌐 **Web Viewer (TypeScript)**
+Folder: `/web/`
 
 Features:
-
-Displays static or base64-encoded processed frames
-
-Simple, clean HTML+TS interface
-
-Shows placeholder metadata (resolution, FPS)
-
-Demonstrates TypeScript project structure & DOM updates
+- Loads **static/base64 processed images**
+- Shows placeholder frame metadata
+- Minimal, clear HTML+TS UI
 
 Run:
-
+```bash
 npm install
 npm run dev
+```
 
-📂 Project Structure
+---
+
+## 📂 **Project Structure**
+
+```
 /
 ├── app/
 │   ├── src/main/
 │   │   ├── java/...               # Android camera + JNI + UI
-│   │   └── cpp/...                # OpenCV C++ processing (edgedetect.cpp)
+│   │   └── cpp/...                # OpenCV C++ (edgedetect.cpp)
 │   └── build.gradle
 │
 ├── web/
 │   ├── index.html                 # Web viewer UI
 │   ├── viewer.ts                  # Renders sample frame
-│   ├── sample_frame.txt           # Base64 or test image
+│   ├── sample_frame.txt           # Test image/base64
 │   ├── package.json               # Dependencies
-│   ├── tsconfig.json              # TS compiler config
+│   ├── tsconfig.json              # TS config
 │   └── README.md                  # Web-specific docs
 │
-├── CMakeLists.txt                 # Native build script
-├── OPEN_CV_INSTRUCTIONS.txt       # OpenCV setup help
-├── build.gradle                   # Root Gradle config
+├── CMakeLists.txt                 # Native build rules
+├── OPEN_CV_INSTRUCTIONS.txt       # OpenCV setup notes
+├── build.gradle                   # Root Gradle
 ├── settings.gradle
 └── README.md                      # (This file)
+```
 
-⚙️ Setup & Build Instructions
-✅ 1. Android Prerequisites
+---
 
+## ⚙️ **Setup & Build Instructions**
+
+### ✅ **1. Android Requirements**
 Install:
+- Android Studio (latest)
+- Android SDK 33+
+- Android NDK 23+
+- CMake & LLDB
 
-Android Studio (latest)
+---
 
-Android SDK 33+
+### 🔧 **2. Configure OpenCV Android SDK**
 
-Android NDK (23+ recommended)
+Download OpenCV → Extract → Add path in `CMakeLists.txt`:
 
-CMake & LLDB
-(via Android Studio → SDK Tools)
-
-🔧 2. Configure OpenCV Android SDK
-
-Download from OpenCV.org
-
-Extract to:
-
-/path/to/OpenCV-android-sdk/
-
-
-Edit CMakeLists.txt:
-
+```cmake
 set(OpenCV_DIR /absolute/path/OpenCV-android-sdk/sdk/native/jni)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(edgedetect ${OpenCV_LIBS})
+```
 
+(Instructions also provided in `OPEN_CV_INSTRUCTIONS.txt`)
 
-(Also included inside OPEN_CV_INSTRUCTIONS.txt)
+---
 
-🏗 3. Build Native Library
+### 🏗 **3. Build Native Library**
+Android Studio → **Build → Make Project**
 
-Android Studio → Build → Make Project
-
-This produces:
-
+Produces:
+```
 libedgedetect.so
+```
 
-📱 4. Run Android App
+---
 
-Connect physical device or emulator (with camera)
+### 📱 **4. Run Android App**
+- Connect device/emulator  
+- Click **Run**
 
-Click Run in Android Studio
+---
 
-🌐 5. Run Web Viewer
+### 🌐 **5. Run Web Viewer**
+
+```bash
 cd web
 npm install
-npm run build   # OR tsc
+npm run build   # or: tsc
 open index.html
+```
 
+Displays processed frame from `sample_frame.txt`.
 
-Displays the processed frame from sample_frame.txt.
+---
 
-🧩 Architecture Overview
-Processing Pipeline
+## 🧩 **Architecture Overview**
+
+### **Processing Pipeline**
+
+```
 Camera Feed → Java Camera Handler
               ↓
             JNI Layer
@@ -161,30 +158,30 @@ Camera Feed → Java Camera Handler
        OpenGL ES Renderer
               ↓
          Android Display
+```
 
-Web Path (Parallel)
-C++ Output → Exported Frame (PNG/Base64)
-              ↓
-          Web Viewer (TS)
+### **Web Path**
 
-⭐ Optional / Bonus Features (Planned / Partially Done)
+```
+C++ Frame Output → Exported as PNG/Base64 → TypeScript Web Viewer
+```
 
-🔄 Toggle: Raw camera feed / Edge-detected feed
+---
 
-⏱ FPS counter overlay
+## ⭐ **Optional / Bonus Features**
+- 🔄 Toggle raw / processed feed
+- ⏱ FPS overlay
+- 🎛 GLSL shader effects
+- 🌐 Live frame export to Web Viewer
 
-🎛 GLSL shader-based visual effects
+---
 
-🌐 Export frames to browser viewer
+## 🧪 **Testing**
+- ✔ Tested on physical Android device  
+- ✔ Verified native OpenCV + JNI pipeline  
+- ✔ Web viewer works with sample frame  
 
-🧪 Testing
+---
 
-✔ Tested on physical Android device
-
-✔ Verified OpenCV C++ processing
-
-✔ Web viewer working with test frame
-
-👤 Author
-
-Aryan Dwivedi
+## 👤 **Author**
+**Aryan Dwivedi**
