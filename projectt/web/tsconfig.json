@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "none",
+    "outFile": "./dist/viewer.js",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "./viewer.ts"
+  ]
+}

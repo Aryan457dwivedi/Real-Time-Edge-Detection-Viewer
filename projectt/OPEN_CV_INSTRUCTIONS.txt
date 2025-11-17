@@ -1,0 +1,6 @@
+OpenCV integration notes:
+- Download OpenCV Android SDK from official OpenCV site.
+- Place the SDK folder somewhere (e.g., $HOME/Android/OpenCV-android-sdk).
+- Update CMakeLists.txt: set(OpenCV_DIR /path/to/OpenCV-android-sdk/sdk/native/jni)
+- Uncomment find_package(OpenCV REQUIRED) and include_directories(${OpenCV_INCLUDE_DIRS})
+- Link with ${OpenCV_LIBS}

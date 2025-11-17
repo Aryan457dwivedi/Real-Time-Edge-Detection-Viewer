@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 33
+    defaultConfig {
+        applicationId "com.example.edgedetect"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        ndk {
+            abiFilters "armeabi-v7a","arm64-v8a","x86","x86_64"
+        }
+    }
+    buildTypes {
+        release { minifyEnabled false }
+    }
+    externalNativeBuild {
+        cmake { path file('../CMakeLists.txt') }
+    }
+    namespace "com.example.edgedetect"
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.9.0'
+}
