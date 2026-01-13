@@ -3,4 +3,4 @@
 This is a minimal skeleton Android project (Java) with native C++ hooks and a TypeScript web viewer.
 You must add OpenCV Android SDK and implement full camera handling for production use.
 
-Prepared for: Ayush Mishra
+Prepared for: Aryan Dwivedi
