@@ -1,4 +1,4 @@
-# 📱 **Real-Time Edge Detection Viewer**
+#  **Real-Time Edge Detection Viewer**
 ### **Android (Java/Kotlin) • OpenCV (C++) • OpenGL ES • TypeScript Web Viewer**
 
 A complete real-time image processing pipeline combining **Android Camera**, **Native OpenCV C++**, and **OpenGL ES** rendering.  
@@ -8,9 +8,9 @@ _Project submitted as part of the **Software Engineering Intern (R&D) Assignment
 
 ---
 
-## 🚀 **Features Implemented**
+##  **Features Implemented**
 
-### 📘 **Android Application**
+###  **Android Application**
 - Camera feed capture using **TextureView / SurfaceTexture**
 - **JNI bridge** for sending frames to native C++
 - **OpenCV processing**, including:
@@ -25,7 +25,7 @@ _Project submitted as part of the **Software Engineering Intern (R&D) Assignment
 
 ---
 
-### 🧠 **Native C++ (NDK + OpenCV)**
+### **Native C++ (NDK + OpenCV)**
 - Located at: `app/src/main/cpp/`
 - Handles:
   - Frame conversion  
@@ -35,7 +35,7 @@ _Project submitted as part of the **Software Engineering Intern (R&D) Assignment
 
 ---
 
-### 🎨 **OpenGL ES Rendering**
+### **OpenGL ES Rendering**
 - Uses **OpenGL ES 2.0**
 - Renders:
   - Raw camera frames  
@@ -44,7 +44,7 @@ _Project submitted as part of the **Software Engineering Intern (R&D) Assignment
 
 ---
 
-### 🌐 **Web Viewer (TypeScript)**
+### **Web Viewer (TypeScript)**
 Folder: `/web/`
 
 Features:
@@ -60,7 +60,7 @@ npm run dev
 
 ---
 
-## 📂 **Project Structure**
+## **Project Structure**
 
 ```
 /
@@ -89,7 +89,7 @@ npm run dev
 
 ## ⚙️ **Setup & Build Instructions**
 
-### ✅ **1. Android Requirements**
+### **1. Android Requirements**
 Install:
 - Android Studio (latest)
 - Android SDK 33+
@@ -98,7 +98,7 @@ Install:
 
 ---
 
-### 🔧 **2. Configure OpenCV Android SDK**
+###  **2. Configure OpenCV Android SDK**
 
 Download OpenCV → Extract → Add path in `CMakeLists.txt`:
 
@@ -113,7 +113,7 @@ target_link_libraries(edgedetect ${OpenCV_LIBS})
 
 ---
 
-### 🏗 **3. Build Native Library**
+### **3. Build Native Library**
 Android Studio → **Build → Make Project**
 
 Produces:
@@ -123,13 +123,13 @@ libedgedetect.so
 
 ---
 
-### 📱 **4. Run Android App**
+###  **4. Run Android App**
 - Connect device/emulator  
 - Click **Run**
 
 ---
 
-### 🌐 **5. Run Web Viewer**
+###  **5. Run Web Viewer**
 
 ```bash
 cd web
@@ -142,7 +142,7 @@ Displays processed frame from `sample_frame.txt`.
 
 ---
 
-## 🧩 **Architecture Overview**
+## **Architecture Overview**
 
 ### **Processing Pipeline**
 
@@ -168,18 +168,18 @@ C++ Frame Output → Exported as PNG/Base64 → TypeScript Web Viewer
 
 ---
 
-## ⭐ **Optional / Bonus Features**
-- 🔄 Toggle raw / processed feed
-- ⏱ FPS overlay
-- 🎛 GLSL shader effects
-- 🌐 Live frame export to Web Viewer
+##  **Optional / Bonus Features**
+-  Toggle raw / processed feed
+-  FPS overlay
+-  GLSL shader effects
+-  Live frame export to Web Viewer
 
 ---
 
-## 🧪 **Testing**
-- ✔ Tested on physical Android device  
-- ✔ Verified native OpenCV + JNI pipeline  
-- ✔ Web viewer works with sample frame  
+##  **Testing**
+-  Tested on physical Android device  
+-  Verified native OpenCV + JNI pipeline  
+-  Web viewer works with sample frame  
 
 ---
 
